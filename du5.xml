@@ -5,27 +5,32 @@
 		
 			<rule id="init">		
 			<one-of>
-			<item>
-				<ruleref special="GARBAGE"/>
-				which
-				<ruleref uri="#which"/>
-				terminated
-				<ruleref uri="#terminated"/>
-				<tag> {out.init="true";
-					out.which=rules.which;
-					out.terminated=rules.terminated}</tag>			
-			</item>
+				<item>
+					<ruleref special="GARBAGE"/>
+					which
+					<ruleref uri="#which"/>
+					terminated
+					<ruleref uri="#terminated"/>
+					<tag> {out.init="true";
+						out.which=rules.which;
+						out.terminated=rules.terminated}
+					</tag>			
+				</item>
 			</one-of>
 			</rule>
 			
 			<rule id="which">
 				<ruleref uri="#course"/>
-				<tag>{ out=rules.course}</tag>
+				<tag>
+					{out=rules.course}
+				</tag>
 			</rule>
 			
 			<rule id="terminated">
 				<ruleref uri="#sk_za"/>
-				<tag>{ out=rules.sk_za}</tag>
+				<tag>
+					{out=rules.sk_za}
+				</tag>
 			</rule>
 			
 			<rule id="course">
