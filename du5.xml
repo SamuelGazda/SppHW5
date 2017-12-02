@@ -1,0 +1,122 @@
+<vxml xmlns="http://www.w3.org/2001/vxml" version="2.0" xml:lang="en-US">
+	<from id="main">
+		<grammar root="init" xml:lang="en-US">
+		
+			<rule id="init">
+				<ruleref special="GARBAGE"/>
+				which
+				<ruleref uri="#which"/>
+				terminated
+				<ruleref uri="#terminated"/>
+				<tag> { out.init="true"; out.which=rules.which; out.terminated=rules.terminated}</tag>			
+			</rule>
+			
+			<rule id="which">
+				<ruleref uri="#course"/>
+				<tag>{ out=rules.course}</tag>
+			</rule>
+			
+			<rule id="terminated">
+				<ruleref uri="#sk_za"/>
+				<tag>{ out=rules.sk_za}</tag>
+			</rule>
+			
+			<rule id="course">
+				<one-of>
+					<item>IB111 Introduction to the programming</item>
+					<item>PB161 Programming in C++</item>
+					<item>PB162 Programming in Java</item>
+					<item>PB071 Low level programming</item>
+				</one-of>
+			</rule>
+			<rule id="sk_za">
+				<one-of>
+					<item>Skuska</item>
+					<item>Zapocet</item>
+				</one-of>
+			</rule>
+		</grammar>
+	<initial name="init">
+		<prompt> Welcome to course regystration system.</prompt>
+		<prompt> You can choose from IB111 Introduction to the programming,
+		PB161 Programming in C++, PB162 Programming in Java or PB071 Low level programming
+		terminated either by skuska or zapocet. </prompt>
+		
+		<noinput count="1">
+			<prompt>Please choose one course and its termination.</prompt>
+		</noinput>
+		<noinput>
+			<assign name="init" expr="'true'"/>
+		</noinput>
+		<nomatch>
+			<assign name="init" expr="'true'"/>
+		</nomatch>
+	</initial>
+	<field name="which">
+		<prompt>Which course do you want to register?</prompt>
+		<nomatch>
+			<assign name="which" expr="'true'"/>
+		</nomatch>
+		<noinput>
+			<assign name="which" expr="'true'"/>
+		</noinput>
+		<grammar root="which">
+			<rule id="which">
+				<one-of>
+					<item>IB111 Introduction to the programming</item>
+					<item>PB161 Programming in C++</item>
+					<item>PB162 Programming in Java</item>
+					<item>PB071 Low level programming</item>
+				</one-of>
+			</rule>
+		</grammar>
+	</field>
+	<field name="whichDtmf" cond="which='true'">
+		<prompt>Which course do you want to register?</prompt>
+		<option dtmf="1" value="IB111 Introduction to the programming"> IB111 Introduction to the programming </option>
+		<option dtmf="2" value="PB161 Programming in C++"> PB161 Programming in C++ </option>
+		<option dtmf="3" value="PB162 Programming in Java"> PB162 Programming in Java </option>
+		<option dtmf="4" value="PB071 Low level programming"> PB071 Low level programming </option>
+		<filled>
+			<assign name="which" expr="whichDtmf"/>
+		</filled>
+	</field>
+	
+	<field name="sk_za">
+		<prompt> How do you want to terminate this course? </prompt>
+			<nomatch>
+				<assign name="sk_za" expr="'true'"/>
+			</nomatch>
+			<noinput>
+				<assign name="sk_za" expr="'true'"/>
+			</noinput>
+			<grammar root="sk_za">
+				<rule id="sk_za">
+					<one-of>
+						<item>Skuska</item>
+						<item>Zapocet</item>
+					</one-of>
+				</rule>
+			</grammar>
+	</field>
+	
+	<field name="sk_zaDtmf" cond="sk_za='true'">
+		<prompt> How do you want to terminate this course? </prompt>
+		<option dtmf="1" value="Skuska"> Skuska </option>
+		<option dtmf="2" value="Zapocet"> Zapocet </option>	
+		<filled>
+			<assign name="which" expr="whichDtmf"/>
+		</filled>
+	</field>
+	
+	<filled>
+		<prompt>
+			The registration of
+			<value expr="which"/>
+			with termination by
+			<value expr="sk_za"/>
+			has been made.
+		</prompt>
+	</filled>
+</from>
+</vxml>
