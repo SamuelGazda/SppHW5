@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vxml version="2.0" xml:lang="en-US" xmlns="http://www.w3.org/2001/vxml">
+ <form id="main"> 
+ <grammar root="init" xml:lang="en-US">
+   <rule id="init">
+   <one-of>
+    <item>
+    <ruleref special="GARBAGE"/> from <ruleref uri="#from"/> to
+<ruleref uri="#to"/> by <ruleref uri="#kind"/>  <ruleref uri="#when"/>
+    <tag>
+	{
+		out.init="true";
+		out.from = rules.from;
+		out.to = rules.to;
+		out.kind = rules.kind;
+		out.when = rules.when;
+	}
+    </tag>
+   </item>
+   <item>
+    <ruleref special="GARBAGE"/> from <ruleref uri="#from"/> to
+<ruleref uri="#to"/> by <ruleref uri="#kind"/>
+    <tag>
+	{
+		out.init="true";
+		out.from = rules.from;
+		out.to = rules.to;
+		out.kind = rules.kind;
+	}
+     </tag>
+    </item> 
+   <item>
+    <ruleref special="GARBAGE"/> from <ruleref uri="#from"/> to
+<ruleref uri="#to"/> 
+    <tag>
+	{
+		out.init="true";
+		out.from = rules.from;
+		out.to = rules.to;
+	}
+      </tag>
+     </item>
+    </one-of>
+   </rule>
+
+   <rule id="from">
+        <ruleref uri="#city"/>
+        <tag>
+        {
+                out = rules.city;
+        }
+        </tag>
+   </rule>
+
+   <rule id="to">
+        <ruleref uri="#city"/>
+        <tag>
+        {
+                out = rules.city;
+        }
+        </tag>
+   </rule>
+
+   <rule id="kind">
+        <one-of>
+         <item>bus<tag>{out = 'bus';}</tag></item>
+         <item>train<tag>{out = 'train';}</tag></item>
+        </one-of>
+   </rule>
+
+   <rule id="when">
+    <one-of>
+        <item>today<tag>{out ='today';}</tag></item>
+        <item>tomorrow<tag>{out ='tomorrow';}</tag></item>
+    </one-of>
+   </rule>
+
+   <rule id="city">
+        <one-of>
+                <item>Brno</item>
+                <item>Prague</item>
+                <item>Ostrava</item>
+        </one-of>
+   </rule>
+ </grammar>
+
+ <initial name="init">
+	<prompt>Welcome to travell reservation system.</prompt>
+        <prompt> You can make a reservation for travel by bus or train between Brno, Prague and Ostrava.</prompt>
+	<noinput count="1">
+	 <prompt>Specify where are you, where do you want to get, what kind of  transport do you prefer and when do you want to go.</prompt>
+	</noinput>
+	<noinput>
+	 <assign name="init" expr="'true'"/>
+	</noinput>
+	<nomatch>
+	 <assign name="init" expr="'true'"/>
+	</nomatch>
+ </initial>
+ <field name="from">
+	<prompt>Where do you want to go from?</prompt>
+	<grammar root="city">
+	  <rule id="city">
+		<one-of>
+		 <item>Brno</item>
+		 <item>Prague</item>
+		 <item>Ostrava</item>
+		</one-of>
+	  </rule>
+	 </grammar>
+ </field>
+ <field name="to">
+	<prompt>Where do you want to go?</prompt>
+	<grammar root="city">
+	  <rule id="city">
+		<one-of>
+		 <item>Brno</item>
+		 <item>Prague</item>
+		 <item>Ostrava</item>
+		</one-of>
+	  </rule>
+	 </grammar>
+ </field>
+ <field name="kind">
+	<prompt>What kind of transport do you prefer?</prompt>
+	<grammar root="kind">
+	  <rule id="kind">
+		<one-of>
+		 <item>train</item>
+		 <item>bus</item>
+		</one-of>
+	  </rule>
+	 </grammar>
+ </field>
+ <field name="when">
+	<prompt>When do you want to travel?</prompt>
+        <nomatch>
+           <assign name="when" expr="'true'"/>
+        </nomatch>			
+        <noinput>
+           <assign name="when" expr="'true'"/>
+        </noinput>			
+	<grammar root="when">
+	 <rule id="when">
+	  <one-of>
+	   <item>tomorrow</item>
+	   <item>today</item>
+          </one-of>	
+	 </rule>
+	</grammar>
+ </field>
+ <field name="whendtmf" cond="when='true'">
+   <prompt>When do you want to travel? 1 for today 2 for tomorrow.</prompt>
+   <option dtmf="1" value="today">today</option>
+   <option dtmf="2" value="tomorrow">tomorrow</option>
+  <filled>
+   <assign name="when" expr="whendtmf"/>
+  </filled>
+ </field>
+ <filled>
+	<prompt>The reservation for <value expr="kind"/> from <value expr="from"/> to <value expr="to"/> at <value expr="when"/> has been made.</prompt>
+ </filled>
+</form>
+</vxml>
