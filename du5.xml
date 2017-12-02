@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<vxml version="2.0" xml:lang="en-US" xmlns="http://www.w3.org/2001/vxml">
+<vxml xmlns="http://www.w3.org/2001/vxml" version="2.0" xml:lang="en-US">
 	<from id="main">
 		<grammar root="init" xml:lang="en-US">
 		
-			<rule id="init">
+			<rule id="init">		
+			<one-of>
+			<item>
 				<ruleref special="GARBAGE"/>
 				which
 				<ruleref uri="#which"/>
 				terminated
 				<ruleref uri="#terminated"/>
-				<tag> { out.init="true"; out.which=rules.which; out.terminated=rules.terminated}</tag>			
+				<tag> {out.init="true";
+					out.which=rules.which;
+					out.terminated=rules.terminated}</tag>			
+			</item>
+			</one-of>
 			</rule>
 			
 			<rule id="which">
