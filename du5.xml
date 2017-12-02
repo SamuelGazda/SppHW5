@@ -115,7 +115,7 @@
 		<option dtmf="1" value="Skuska"> Skuska </option>
 		<option dtmf="2" value="Zapocet"> Zapocet </option>	
 		<filled>
-			<assign name="which" expr="whichDtmf"/>
+			<assign name="sk_za" expr="sk_zaDtmf"/>
 		</filled>
 	</field>
 	
