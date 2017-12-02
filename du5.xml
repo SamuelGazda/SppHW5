@@ -4,8 +4,7 @@
 		<grammar root="init" xml:lang="en-US">
 		
 			<rule id="init">		
-			<one-of>
-				<item>
+
 					<ruleref special="GARBAGE"/>
 					which
 					<ruleref uri="#which"/>
@@ -15,8 +14,7 @@
 						out.which=rules.which;
 						out.terminated=rules.terminated}
 					</tag>			
-				</item>
-			</one-of>
+
 			</rule>
 			
 			<rule id="which">
