@@ -120,13 +120,7 @@
 	</field>
 	
 	<filled>
-		<prompt>
-			The registration of
-			<value expr="which"/>
-			with termination by
-			<value expr="skza"/>
-			has been made.
-		</prompt>
+		<prompt>The registration of <value expr="which"/>with termination by <value expr="skza"/> has been made. </prompt>
 	</filled>
 </form>
 </vxml>
