@@ -81,7 +81,7 @@
 			</rule>
 		</grammar>
 	</field>
-	<!--<field name="whichDtmf" cond="which='true'">
+	<field name="whichDtmf" cond="which='true'">
 		<prompt>Which course do you want to register?</prompt>
 		<option dtmf="1" value="IB111 Introduction to the programming"> IB111 Introduction to the programming </option>
 		<option dtmf="2" value="PB161 Programming in C++"> PB161 Programming in C++ </option>
@@ -110,7 +110,7 @@
 			</grammar>
 	</field>
 	
-	<field name="skzaDtmf" cond="skza='true'">
+	<!--<field name="skzaDtmf" cond="skza='true'">
 		<prompt> How do you want to terminate this course? </prompt>
 		<option dtmf="1" value="Skuska"> Skuska </option>
 		<option dtmf="2" value="Zapocet"> Zapocet </option>	
