@@ -110,7 +110,7 @@
 			</grammar>
 	</field>
 	
-	<!--<field name="skzaDtmf" cond="skza='true'">
+	<field name="skzaDtmf" cond="skza='true'">
 		<prompt> How do you want to terminate this course? </prompt>
 		<option dtmf="1" value="Skuska"> Skuska </option>
 		<option dtmf="2" value="Zapocet"> Zapocet </option>	
@@ -121,6 +121,6 @@
 	
 	<filled>
 		<prompt>The registration of <value expr="which"/>with termination by <value expr="skza"/> has been made. </prompt>
-	</filled>--->
+	</filled>
 </form>
 </vxml>
