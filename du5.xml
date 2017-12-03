@@ -46,7 +46,7 @@
 				</one-of>
 			</rule>
 		</grammar>
-	<initial name="init">
+	<!---<initial name="init">
 		<prompt> Welcome to course registration system.</prompt>
 		<prompt> You can choose from IB111 Introduction to the programming,
 		PB161 Programming in C++, PB162 Programming in Java or PB071 Low level programming
@@ -121,6 +121,6 @@
 	
 	<filled>
 		<prompt>The registration of <value expr="which"/>with termination by <value expr="skza"/> has been made. </prompt>
-	</filled>
+	</filled>--->
 </form>
 </vxml>
