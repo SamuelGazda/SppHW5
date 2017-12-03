@@ -25,9 +25,9 @@
 			</rule>
 			
 			<rule id="terminated">
-				<ruleref uri="#sk_za"/>
+				<ruleref uri="#skza"/>
 				<tag>
-					{out=rules.sk_za}
+					{out=rules.skza}
 				</tag>
 			</rule>
 			
@@ -39,7 +39,7 @@
 					<item>PB071 Low level programming</item>
 				</one-of>
 			</rule>
-			<rule id="sk_za">
+			<rule id="skza">
 				<one-of>
 					<item>Skuska</item>
 					<item>Zapocet</item>
@@ -92,16 +92,16 @@
 		</filled>
 	</field>
 	
-	<field name="sk_za">
+	<field name="skza">
 		<prompt> How do you want to terminate this course? </prompt>
 			<nomatch>
-				<assign name="sk_za" expr="'true'"/>
+				<assign name="skza" expr="'true'"/>
 			</nomatch>
 			<noinput>
-				<assign name="sk_za" expr="'true'"/>
+				<assign name="skza" expr="'true'"/>
 			</noinput>
-			<grammar root="sk_za">
-				<rule id="sk_za">
+			<grammar root="skza">
+				<rule id="skza">
 					<one-of>
 						<item>Skuska</item>
 						<item>Zapocet</item>
@@ -110,12 +110,12 @@
 			</grammar>
 	</field>
 	
-	<field name="sk_zaDtmf" cond="sk_za='true'">
+	<field name="skzaDtmf" cond="skza='true'">
 		<prompt> How do you want to terminate this course? </prompt>
 		<option dtmf="1" value="Skuska"> Skuska </option>
 		<option dtmf="2" value="Zapocet"> Zapocet </option>	
 		<filled>
-			<assign name="sk_za" expr="sk_zaDtmf"/>
+			<assign name="skza" expr="skzaDtmf"/>
 		</filled>
 	</field>
 	
@@ -124,7 +124,7 @@
 			The registration of
 			<value expr="which"/>
 			with termination by
-			<value expr="sk_za"/>
+			<value expr="skza"/>
 			has been made.
 		</prompt>
 	</filled>
