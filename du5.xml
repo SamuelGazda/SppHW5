@@ -47,7 +47,7 @@
 			</rule>
 		</grammar>
 	<initial name="init">
-		<prompt> Welcome to course regystration system.</prompt>
+		<prompt> Welcome to course registration system.</prompt>
 		<prompt> You can choose from IB111 Introduction to the programming,
 		PB161 Programming in C++, PB162 Programming in Java or PB071 Low level programming
 		terminated either by skuska or zapocet. </prompt>
