@@ -45,6 +45,14 @@
 					<item>Zapocet</item>
 				</one-of>
 			</rule>
+			
+			<rule id="repeat">
+				<one-of>
+					<item>Yes</item>
+					<item>No</item>
+				</one-of>
+			</rule>
+				
 		</grammar>
 	<initial name="init">
 		<prompt> Welcome to course registration system.</prompt>
@@ -118,7 +126,29 @@
 			<assign name="skza" expr="skzaDtmf"/>
 		</filled>
 	</field>
+	<field name="repeat">
+		<prompt> Do you want to register <value expr="which"/>with termination by <value expr="skza"/> ?</prompt>
+		<nomatch>
+			<assign name="repeat" expr="Yes"/>
+		</nomatch>
+		<noinput>
+			<assign name="repeat" expr="Yes"/>
+		</noinput>
+		<grammar root="repeat">
+			<rule id="repeat">
+				<one-of>
+					<item>Yes</item>
+					<item>No</item>
+				</one-of>
+			</rule>
+		</grammar>
+	</field>
 	
+	<field name="again" cond="repeat='No'">
+		<prompt> Ok. I am starting this formular over. </prompt>
+		<goto next="#main" />
+		
+	</field>
 	<filled>
 		<prompt>The registration of <value expr="which"/>with termination by <value expr="skza"/> has been made. </prompt>
 	</filled>
