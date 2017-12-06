@@ -6,7 +6,7 @@
 			<rule id="init">		
 
 					<ruleref special="GARBAGE"/>
-					which
+					register
 					<ruleref uri="#which"/>
 					terminated
 					<ruleref uri="#terminated"/>
